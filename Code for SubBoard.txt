@@ -45,10 +45,11 @@ unsigned char receive_ACK[25];//Command receiving buffer
 #endif
 
 #include <Servo.h>
+#define sw1 11
+
 Servo sv;
 int pos1 = 0; 
-int pos2 = 165; //initial value = 93 degree
-int sw1 = 11;
+int pos2 = 165; 
 int get_sw = 0;
 int nfcON = 0;
 int cnt = 0;
@@ -57,9 +58,8 @@ void setup() {
   pinMode(sw1, INPUT_PULLUP);
   sv.attach(3);
   Serial.begin(9600);  // open serial with PC
-  Serial2.begin(115200);  //open serial1 with device
-  Serial3.begin(9600);
-  //Serial2.begin(115200);
+  Serial2.begin(115200);  //open serial1 (NFC Module) with device
+  Serial3.begin(9600);  //open serial2 (Bluetooth) with device
   wake_card();
   delay(100);
   read_ACK(15);
@@ -74,18 +74,17 @@ void loop() {
   delay(100);
   receiveBT();
 
-  if (nfcON == 1) { //nfc ON
+  if (nfcON == 1) {  //NFC Module Activate
     if (test_ACK ()) {
       read_id();
       count = check_id(count);
       if (count == 0) {
         display(25);
-        sv.write(pos2);
+        sv.write(pos2);  // door unlock
         delay(2500);
         get_sw = 0;
         nfcON = 0;
         sendBT();
-        //receiveBT();
       }
     }
   }
@@ -96,20 +95,20 @@ void loop() {
         get_sw = 1;
         nfcON = 0;
         sendBT();
-        sv.write(pos1);
+        sv.write(pos1);  // DOOR LOCK
       }
       else if (cnt == 2) {
-        get_sw = 0;
+        get_sw = 0;  // get_sw initialize
         sendBT();
-        sv.write(pos2);
-        cnt = 0; //cnt initialize
+        sv.write(pos2);  // DOOR UNLOCK
+        cnt = 0;  //cnt initialize
       }
     }
   }
   copy_id ();
 }
 
-void receiveBT(void) {
+void receiveBT(void) {   //Receive Bluetooth data from Main Board 
   if (Serial3.available()) {
     nfcON = Serial3.read();
   }
@@ -121,7 +120,7 @@ void sendBT(void) {
   Serial3.write(get_sw);
 }
 
-int test_ACK (void) {// return true if receive_ACK accord with std_ACK
+int test_ACK (void) {   // Return true if receive_ACK accord with std_ACK
   int i;
   for (i = 0; i < 19; i++) {
     if (receive_ACK[i] != std_ACK[i])
@@ -137,14 +136,14 @@ void read_id (void) {
   }
 }
 
-int check_id(int count) {
+int check_id(int count) {   //check tag UID if they match with registered UID
   if (cur_id[0] == 52 && cur_id[1] == 38 && cur_id[2] == 147) {
     return 0;
   }
   return 1;
 }
 
-void send_id (void) {//send id to PC
+void send_id (void) {   //send id to PC
   int i;
   Serial.print ("ID: ");
   for (i = 19; i <= 23; i++) {

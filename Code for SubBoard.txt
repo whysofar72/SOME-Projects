@@ -108,7 +108,7 @@ void loop() {
   copy_id ();
 }
 
-void receiveBT(void) {   //Receive Bluetooth data from Main Board 
+void receiveBT(void) {   //Receive Bluetooth data(nfcON) from Main Board 
   if (Serial3.available()) {
     nfcON = Serial3.read();
   }
@@ -116,7 +116,7 @@ void receiveBT(void) {   //Receive Bluetooth data from Main Board
   delay(50);
 }
 
-void sendBT(void) {
+void sendBT(void) {   //Send Bluetooth data(get_sw) to Main Board
   Serial3.write(get_sw);
 }
 
@@ -129,7 +129,7 @@ int test_ACK (void) {   // Return true if receive_ACK accord with std_ACK
   return 1;
 }
 
-void read_id (void) {
+void read_id (void) {   //Read & copy tag UID
   int ai, ci;
   for (ci = 0, ai = 19; ci < 5; ci++, ai++) {
     cur_id[ci] = receive_ACK[ai];

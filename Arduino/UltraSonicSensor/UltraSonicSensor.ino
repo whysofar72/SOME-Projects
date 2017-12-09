@@ -29,7 +29,7 @@ void loop()
     /*Serial.print(distance);
     Serial.println("cm");
     delay(100);*/
-    if (distance<=10){  // 서보모터 동작조건을 초음파 센서 측정거리 10cm 이내로 설정
+    if (distance<=10){
       sv.write(pos2);
       delay(5000);
       sv.write(pos1);

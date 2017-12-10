@@ -120,7 +120,7 @@ public class LinkedList {
 	public ListIterator listIterator() {
 		return new ListIterator();
 	}
-	class ListIterator{
+	public class ListIterator{
 		private Node next;
 		private Node lastReturned;
 		private int nextIndex;

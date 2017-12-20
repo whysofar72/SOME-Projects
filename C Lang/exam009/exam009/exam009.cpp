@@ -1,7 +1,7 @@
 #include <stdio.h>
 void main()
 {
-	int red=1, blue=2;
+	int red = 1, blue = 2;
 	int yellow;
 
 	printf("before \n");

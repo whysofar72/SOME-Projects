@@ -2,10 +2,10 @@
 #include <stdio.h>
 int main(){
 	double r;
-	double pi=3.14;
+	double pi = 3.14;
 
 	printf("Enter radius value of the desired circle : ");
-	scanf("%lf", &r);
+	scanf_s("%lf", &r);
 
 	printf("\n");
 

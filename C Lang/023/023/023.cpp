@@ -1,10 +1,10 @@
 #include <stdio.h>
 int main()
 {
-	int a,b;
+	int a, b;
 
-	a=3;
-	b=a+5;
+	a = 3;
+	b = a + 5;
 
 	printf("a의 값 : %d \n", a);
 	printf("b의 값 : %d \n", b);

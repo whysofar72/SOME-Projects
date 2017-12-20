@@ -1,11 +1,11 @@
 #include <stdio.h>
 int main()
 {
-	printf("%d added %d equals %d. \n \n", 8, 10, 8+10);
-	printf("%i added %i equals %i. \n \n", -9, -17, -9-17);
-	printf("%d substracted %d equals %d. \n \n", 8, 10, 8-10);
-	printf("%i substracted %i equals %i. \n \n", -9, -17, -9-(-17));
-	
+	printf("%d added %d equals %d. \n \n", 8, 10, 8 + 10);
+	printf("%i added %i equals %i. \n \n", -9, -17, -9 - 17);
+	printf("%d substracted %d equals %d. \n \n", 8, 10, 8 - 10);
+	printf("%i substracted %i equals %i. \n \n", -9, -17, -9 - (-17));
+
 	printf("decimal number %d equals %x in hexadecimal and %o in octal. \n \n", 50, 50, 50);
 	printf("decimal number %d equals %x in hexadecimal and %o in octal. \n \n", -50, -50, -50);
 	//negative numbers can't be showed in hexadecimal and octal number
@@ -22,7 +22,7 @@ int main()
 
 	printf("small 'a' in capital character goes %c. \n", 'A');
 	printf("%s %c. \n", "small 'a' in capital character goes", 'A');
-	printf("%s %d \n", "2 times 3 equals", 2*3);
+	printf("%s %d \n", "2 times 3 equals", 2 * 3);
 
 	printf("%d \n", 2147483647);
 	printf("%d \n", 2147483648);

@@ -7,7 +7,7 @@ int main(void)
 	//printf("%d \n", b);
 	//return 0;
 
-	int a=1,b=0;
+	int a = 1, b = 0;
 
 	printf("a의 값은 %d입니다. \n", a);
 	printf("b의 값은 %d입니다. \n", b);

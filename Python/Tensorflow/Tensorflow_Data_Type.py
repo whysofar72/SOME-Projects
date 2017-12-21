@@ -32,16 +32,14 @@ print(result)
 
 
 
-value1 = 5
-value2 = 3
-value3 = 2
+image = [[1, 2, 3, 4, 5], [5, 4, 3, 2, 1]]
+label = [10, 20, 30, 40, 50]
 
-ph1 = tf.placeholder(dtype = tf.float32)
-ph2 = tf.placeholder(dtype = tf.float32)
-ph3 = tf.placeholder(dtype = tf.float32)
+ph_image = tf.placeholder(dtype = tf.float32)
+ph_label = tf.placeholder(dtype = tf.float32)
 
-result_val = ph1*ph2+ph3
-fd_dic = {ph1: value1, ph2: value2, ph3: value3}
+result_tens = ph_image + ph_label
+fd_dic = {ph_image: image, ph_label: label}
 sess = tf.Session()
-result = sess.run(result_val, feed_dict=fd_dic)
+result = sess.run(result_tens, feed_dict=fd_dic)
 print(result)

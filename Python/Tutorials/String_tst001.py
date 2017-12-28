@@ -1,0 +1,5 @@
+print('Hello '+'world')
+print('Hello'*5)
+print('Hello'[3])
+print('Hello'[2]+'Hello'[4]+'Hello'[3])
+print('Hello'[0]*3)
